@@ -1,0 +1,29 @@
+ {% extends('base.html.twig' ) %}
+
+ {%block body%}
+ <div class="page-title row">
+     <div class="col-sm-8">
+         <h4>Add Stock</h4>
+     </div>
+     <form action="{{path('add-stock')}}" method="POST">
+         <div class="col-sm-8">
+             <div class="form-group">
+                 <label for="sku">SKU: </label>
+                 <input type="text" class="form-control form" name="sku" placeholder="sku">
+             </div>
+             <div class="form-group">
+                 <label for="sku">Branch: </label>
+                 <input type="text" class="form-control form" name="branch" placeholder="branch">
+             </div>
+             <div class="form-group">
+                 <label for="sku">Stock: </label>
+                 <input type="text" class="form-control form" name="stock" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  placeholder="stock">
+             </div>
+             <div class="form-group">
+                 <input type="submit" name="btAdd" class="btn btn-primary" style="margin-top: 3%;" value="Add Stock"></input>
+             </div>
+         </div>
+     </form>
+ </div>
+
+ {% endblock%}

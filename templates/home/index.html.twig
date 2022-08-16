@@ -1,0 +1,42 @@
+ {% extends('base.html.twig' ) %}
+
+ {%block body%}
+ <div class="page-title row">
+     <div class="col-sm-8">
+         <h4>Stock List</h4>
+     </div>
+     <div class="col-sm-4 page-right">
+         <button type="submit" class="btn btn-success"style="margin-left: 70%;"></i> Add
+             Stock</button>
+     </div>
+ </div>
+            {%if myStocks|length == 0%}
+            <h1>No stock found</h2>
+            {% endif %}
+ <table class="table table-hover">
+     <thead>
+         <tr>
+             <th scope="col">#</th>
+             <th scope="col">SKU</th>
+             <th scope="col">BRANCH</th>
+             <th scope="col">STOCK</th>
+         </tr>
+     </thead>
+     <tbody>
+
+         {% for stock in myStocks %}
+
+         <tr>
+             <td>{{stock.getId}}</td>
+             <td>{{stock.getSTOCKSKU}}</td>
+             <td>{{stock.getSTOCKBRANCH}}</td>
+             <td>{{stock.getSTOCKSTOCK}}</td>
+         </tr>
+         {% endfor %}
+     </tbody>
+ </table>
+ <div class='navigation'>
+     {{knp_pagination_render(myStocks)}}
+ </div>
+
+ {% endblock%}
